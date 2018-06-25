@@ -36,30 +36,32 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link active">
+                <a href="<?= base_url('dashboard.php') ?>" class="nav-link <?= ($title=='Dashboard') ? 'active' : '' ?>">
                   <i class="fa fa-dashboard nav-icon"></i>
                   <p>Dashboard</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="fa fa-money nav-icon"></i>
-                  <p>Points</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="<?= base_url('members.php') ?>" class="nav-link <?= ($title=='Members') ? 'active' : '' ?>">
                   <i class="fa fa-users nav-icon"></i>
                   <p>Members</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="<?= base_url('points.php') ?>" class="nav-link <?= ($title=='Points') ? 'active' : '' ?>">
+                  <i class="fa fa-money nav-icon"></i>
+                  <p>Points</p>
+                </a>
+              </li>
+              
+              <?php if($_SESSION['level'] == 'admin'){ ?>
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="fa fa-user nav-icon"></i>
                   <p>User</p>
                 </a>
               </li>
-              
+              <?php } ?>
             </ul>
           </li>
           <div class="dropdown-divider"></div>
@@ -74,7 +76,6 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="#" class="nav-link">
-                  
                   <p>> Points</p>
                 </a>
               </li>
@@ -83,6 +84,7 @@
                   <p>> Members</p>
                 </a>
               </li>
+              
             </ul>
           </li>
           
@@ -98,3 +100,12 @@
     <section class="content-header">
       <div class="container-fluid">
         <?= msghandling(); ?>
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1><?= $title ?></h1>
+          </div>
+          
+        </div>
+      
+      </div>
+    </section>

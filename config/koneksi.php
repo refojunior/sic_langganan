@@ -45,7 +45,7 @@ function pesan($tag, $isi, $loc=null){
 function msghandling($arr = array("danger", "success", "warning")){
 	foreach($arr as $r){
 		if(isset($_SESSION[$r])){
-			echo "<div class='alert alert-$r'>$_SESSION[$r]</div>";
+			echo "<div class='alert alert-$r'>$_SESSION[$r] <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button> </div>";
 			unset($_SESSION[$r]);
 		}
 	}

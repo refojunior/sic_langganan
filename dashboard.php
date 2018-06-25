@@ -6,6 +6,7 @@ cek_login();
 //header
 $title = 'Dashboard';
 $user = $_SESSION['username'];
+
 require_once 'layout/header.php';
 //navbar 
 require_once 'layout/navbar.php';
@@ -13,14 +14,9 @@ require_once 'layout/navbar.php';
 //sidebar (menu)
 require_once 'layout/sidebar.php';
 ?>
-
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Welcome</h1>
-          </div>
-          
-        </div>
-        <!-- Small Box (Stat card) -->
+    
+    <section class="content-header">
+      <div class="container-fluid">
         <div class="row">
           <div class="col-lg-3 col-6">
             <!-- small card -->
@@ -91,8 +87,7 @@ require_once 'layout/sidebar.php';
           </div>
           <!-- ./col -->
         </div>
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
+      </div>
     </section>
 
     <!-- Main content -->
@@ -113,7 +108,7 @@ require_once 'layout/sidebar.php';
 
     </section>
     <!-- /.content -->
-  </div>
+ 
   <!-- /.content-wrapper -->
 
 <?php require_once('layout/footer.php') ?>
