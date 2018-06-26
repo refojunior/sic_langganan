@@ -6,24 +6,27 @@
     <strong>Copyright &copy; 2018 <a href="http://adminlte.io">Refo & Roni</a>.</strong> All rights
     reserved.
   </footer>
-  <!-- /.control-sidebar -->
 </div>
-<!-- ./wrapper -->
 
 <!-- jQuery -->
 <script src="<?= base_url('assets/plugins/jquery/jquery.min.js') ?>"></script>
 <!-- Bootstrap 4 -->
 <script src="<?= base_url() ?>assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- SlimScroll -->
-<script src="<?= base_url() ?>assets/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<!-- FastClick -->
-<script src="<?= base_url() ?>assets/plugins/fastclick/fastclick.js"></script>
+
 <!-- AdminLTE App -->
 <script src="<?= base_url() ?>assets/dist/js/adminlte.min.js"></script>
 <!-- DataTables -->
 <script src="<?= base_url() ?>assets/plugins/datatables/jquery.dataTables.js"></script>
 <script src="<?= base_url() ?>assets/plugins/datatables/dataTables.bootstrap4.js"></script>
 
+<!-- Datepicker -->
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+$( function(){
+     $( "#datepicker" ).datepicker({ dateFormat: 'yy-mm-dd' });
+    });
+</script>
 
 <script src="<?= base_url() ?>assets/plugins/iCheck/icheck.min.js"></script>
 <script>
@@ -48,5 +51,6 @@ $(document).ready(function(){
     });
   });
 </script>
+
 </body>
 </html>

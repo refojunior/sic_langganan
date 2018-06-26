@@ -20,23 +20,31 @@ require_once 'layout/sidebar.php';
           <div class="card-header">
             <h3 class="card-title">Form Tambah Points</h3>
           </div>
-          <form role="form">
+          <form action="proses/add.php?to=points" method="post">
             <div class="card-body">
               <div class="form-group">
                 <label >Kode Member</label>
-                <input type="email" class="form-control" placeholder="Kode Member">
+                <select name="kd_member" class="form-control">
+                  <option value=""> - PILIH - </option>
+                  <?php $sql = $db->query("SELECT * FROM member where stat = 1"); 
+                      foreach($sql as $col){ ?>
+                        <option value="<?= $col['kd_member'] ?>">
+                          <?= $col['kd_member']." - ". ucwords($col['nama_lengkap']) ?>
+                        </option>
+                  <?php } ?>
+                </select>
               </div>
               <div class="form-group">
                 <label>Nomor Nota</label>
-                <input type="nota" class="form-control" placeholder="No. Nota">
+                <input type="text" name="nota" class="form-control" placeholder="No. Nota">
               </div>
               <div class="form-group">
                 <label>Nominal</label>
-                <input type="text" class="form-control" placeholder="Nominal">
+                <input type="text" name="nominal" class="form-control" placeholder="Nominal">
               </div>
             </div>
             <div class="card-footer">
-              <button type="submit" class="btn btn-primary btn-flat">Submit</button>
+              <button type="submit" class="btn btn-success btn-flat">Submit</button>
             </div>
           </form>
         </div>

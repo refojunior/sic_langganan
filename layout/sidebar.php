@@ -49,16 +49,22 @@
               </li>
               <li class="nav-item">
                 <a href="<?= base_url('points.php') ?>" class="nav-link <?= ($title=='Points') ? 'active' : '' ?>">
-                  <i class="fa fa-money nav-icon"></i>
+                  <i class="fa fa-database nav-icon"></i>
                   <p>Points</p>
                 </a>
               </li>
               
               <?php if($_SESSION['level'] == 'admin'){ ?>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="users.php" class="nav-link <?= ($title=='Users') ? 'active' : '' ?>">
                   <i class="fa fa-user nav-icon"></i>
                   <p>User</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="blocked.php" class="nav-link <?= ($title=='Blocked') ? 'active' : '' ?>">
+                  <i class="fa fa-ban nav-icon"></i>
+                  <p>Blocked Members</p>
                 </a>
               </li>
               <?php } ?>

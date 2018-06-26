@@ -27,11 +27,12 @@ function cek_login(){
 	}
 }
 
-function ada_session(){
-	if($_SESSION){
+function cek_level(){
+	$level = $_SESSION['level'];
+	if($level != 'admin'){
 		$loc = base_url('dashboard.php');
-		pesan("warning", "Anda sudah login", $loc);
-	} 
+		pesan("danger", "Anda tidak memiliki hak untuk mengakses halaman tersebut!!!", $loc);
+	}
 }
 
 function pesan($tag, $isi, $loc=null){

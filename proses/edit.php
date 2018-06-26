@@ -11,7 +11,6 @@ switch ($_GET['to']) {
 		$alamat = $_POST['alamat'];
 		$no_telp = $_POST['no_telp'];
 		$email = $_POST['email'];
-		$created = date('Y-m-d H:i:s');
 
 		$insert = $db->query("UPDATE member set nama_lengkap = '$nama_lengkap', 
 												tempat_lhr = '$tempat_lhr', 
@@ -30,8 +29,10 @@ switch ($_GET['to']) {
 
 		break;
 	
-	case 'points':
-		echo "Proses Add Pooint";
+	case 'unblock':
+		$kd= $_GET['kd'];
+		$unblock = $db->query("UPDATE member set stat=1 where kd_member= '$kd'");
+		pesan('success', 'Proses unblock berhasil', base_url('blocked.php'));
 		break;
 	
 	default:

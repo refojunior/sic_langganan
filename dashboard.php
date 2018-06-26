@@ -13,6 +13,9 @@ require_once 'layout/navbar.php';
 
 //sidebar (menu)
 require_once 'layout/sidebar.php';
+
+//kalkulasi data 
+require_once 'proses/calculation.php';
 ?>
     
     <section class="content-header">
@@ -22,9 +25,9 @@ require_once 'layout/sidebar.php';
             <!-- small card -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>150</h3>
+                <h3><?=  $total_point['poin']; ?></h3>
 
-                <p>Total Point</p>
+                <p>Total Seluruh Point</p>
               </div>
               <div class="icon">
                 <i class="fa fa-shopping-cart"></i>
@@ -39,14 +42,14 @@ require_once 'layout/sidebar.php';
             <!-- small card -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
+                <h3><?= $total_member ?></h3>
 
                 <p>Total Member</p>
               </div>
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>
               </div>
-              <a href="#" class="small-box-footer">
+              <a href="<?= base_url('members.php'); ?>" class="small-box-footer">
                 More info <i class="fa fa-arrow-circle-right"></i>
               </a>
             </div>
@@ -56,14 +59,13 @@ require_once 'layout/sidebar.php';
             <!-- small card -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>44</h3>
-
+                <h3><?= $bulanIni ?></h3>
                 <p>Member Baru Bulan Ini</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="#" class="small-box-footer">
+              <a href="<?= base_url('members.php'); ?>" class="small-box-footer">
                 More info <i class="fa fa-arrow-circle-right"></i>
               </a>
             </div>
@@ -73,27 +75,24 @@ require_once 'layout/sidebar.php';
             <!-- small card -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>65</h3>
+                <h3><?= $blocked ?></h3>
 
                 <p>Member Diblacklist</p>
               </div>
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>
               </div>
-              <a href="#" class="small-box-footer">
+              <a href="blocked.php" class="small-box-footer">
                 More info <i class="fa fa-arrow-circle-right"></i>
               </a>
             </div>
           </div>
-          <!-- ./col -->
+
         </div>
       </div>
     </section>
 
-    <!-- Main content -->
     <section class="content">
-
-      <!-- Default box -->
       <div class="card">
         <div class="card-header">
           <h3 class="card-title">Sistem Informasi Customer Langganan</h3>
@@ -101,14 +100,9 @@ require_once 'layout/sidebar.php';
         <div class="card-body">
           Sistem ini merupakan sistem yang digunakan untuk menanage data pembelian customer, dimana tiap nominal dari pembelian customer tersebut akan mendapatkan point. Perhitungan pendapatan point didapat dari jumlah nominal, semakin besar nominal pembelian maka akan mendapatkan point lebih banyak pula.
         </div>
-        <!-- /.card-body -->
      
       </div>
-      <!-- /.card -->
 
     </section>
-    <!-- /.content -->
- 
-  <!-- /.content-wrapper -->
 
 <?php require_once('layout/footer.php') ?>

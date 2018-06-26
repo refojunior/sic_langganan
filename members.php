@@ -40,7 +40,7 @@ require_once 'layout/sidebar.php';
 					              </div>
 					              <div class="form-group">
 					                <label>Tanggal Lahir</label>
-					                <input type="text" id="datepicker" class="form-control" name="tgl_lhr" placeholder="Tanggal Lahir">
+					                <input type="text" id="datepicker" data-provide="datepicker" class="form-control" name="tgl_lhr" placeholder="Tanggal Lahir">
 					              </div>
 				            	</div>
 					            <div class="card-body col-md-6">
@@ -76,6 +76,10 @@ require_once 'layout/sidebar.php';
 	        <?php } else { 
 	        	$kd_member = $_GET['kd'];
 	        	$get_member = $db->query("SELECT * FROM member WHERE kd_member = '$kd_member' ");
+	        	if ($get_member->rowCount()==0) {
+	        		echo "<script>alert('Data member tidak ditemukan'); location.href='members.php'</script>";
+	        		//pesan("warning", "Data Member tidak ditemukan", "members.php");
+	        	}
 	        	$row = $get_member->fetch();
 	        ?>
 	        <!-- FORM EDIT -->
@@ -166,7 +170,7 @@ require_once 'layout/sidebar.php';
 	                  	<a href="members.php?kd=<?= $row['kd_member'] ?>" class="btn btn-warning btn-sm">
 	                  		edit
 	                  	</a>
-					  	<a href="proses/delete.php?kd=<?= $row['kd_member'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin akan memblokir member?')">
+					  	<a href="proses/delete.php?to=members&kd=<?= $row['kd_member'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin akan memblokir member?')">
 					  		blokir
 					  	</a>
 	                  </td>
