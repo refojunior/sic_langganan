@@ -24,7 +24,7 @@ require_once 'layout/sidebar.php';
             <div class="card-body">
               <div class="form-group">
                 <label >Kode Member</label>
-                <select name="kd_member" class="form-control">
+                <select name="kd_member" class="form-control" required>
                   <option value=""> - PILIH - </option>
                   <?php $sql = $db->query("SELECT * FROM member where stat = 1"); 
                       foreach($sql as $col){ ?>
@@ -36,11 +36,11 @@ require_once 'layout/sidebar.php';
               </div>
               <div class="form-group">
                 <label>Nomor Nota</label>
-                <input type="text" name="nota" class="form-control" placeholder="No. Nota">
+                <input type="text" name="nota" class="form-control" placeholder="No. Nota" required>
               </div>
               <div class="form-group">
                 <label>Nominal</label>
-                <input type="text" name="nominal" class="form-control" placeholder="Nominal">
+                <input type="text" name="nominal" class="form-control" placeholder="Nominal" required>
               </div>
             </div>
             <div class="card-footer">

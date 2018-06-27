@@ -21,5 +21,7 @@
   <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/datatables/dataTables.bootstrap4.css">
   <!-- datepicker -->
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+  <link rel="icon" href="<?= base_url('assets/dist/img/AdminLTELogo.png') ?>">
   
 </head>
