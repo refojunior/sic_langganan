@@ -27,7 +27,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link <?= ($title=='Laporan Points' || $title=='Laporan Members') ? '' : 'active' ?>">
               <i class="nav-icon fa fa-circle-o"></i>
               <p>
                 MENU
@@ -71,8 +71,8 @@
             </ul>
           </li>
           <div class="dropdown-divider"></div>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+          <li class="nav-item has-treeview menu-open">
+            <a href="" class="nav-link <?= ($title=='Laporan Points' || $title=='Laporan Members') ? 'active' : '' ?>">
               <i class="nav-icon fa fa-circle-o"></i>
               <p>
                 Laporan
@@ -80,13 +80,13 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="#" class="nav-link">
+              <li class="nav-item ">
+                <a href="<?= base_url('laporan_points.php') ?>" class="nav-link <?= ($title=='Laporan Points') ? 'active' : '' ?>">
                   <p>> Points</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="<?= base_url('laporan_members.php') ?>" class="nav-link <?= ($title=='Laporan Members') ? 'active' : '' ?>">
                   <p>> Members</p>
                 </a>
               </li>

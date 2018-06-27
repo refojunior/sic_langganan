@@ -32,7 +32,7 @@ require_once 'proses/calculation.php';
               <div class="icon">
                 <i class="fa fa-shopping-cart"></i>
               </div>
-              <a href="#" class="small-box-footer">
+              <a href="<?= base_url('laporan_points.php'); ?>" class="small-box-footer">
                 More info <i class="fa fa-arrow-circle-right"></i>
               </a>
             </div>
@@ -93,7 +93,7 @@ require_once 'proses/calculation.php';
     </section>
 
     <section class="content">
-      <div class="card">
+      <div class="card card-primary card-outline">
         <div class="card-header">
           <h3 class="card-title">Sistem Informasi Customer Langganan</h3>
         </div>

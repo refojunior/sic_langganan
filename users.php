@@ -63,7 +63,7 @@ require_once 'layout/sidebar.php';
     </section>
 
     <section class="content">
-    	 <div class="card">
+    	 <div class="card card-primary card-outline">
             <div class="card-header">
               <h3 class="card-title">Data Table User</h3>
             </div>

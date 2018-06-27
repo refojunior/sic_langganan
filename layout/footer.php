@@ -10,6 +10,16 @@
 
 <!-- jQuery -->
 <script src="<?= base_url('assets/plugins/jquery/jquery.min.js') ?>"></script>
+<!-- Datepicker -->
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+$( function(){
+     $( "#datepicker" ).datepicker({ dateFormat: 'yy-mm-dd' });
+     $( "#datepicker2" ).datepicker({ dateFormat: 'yy-mm-dd' });
+    });
+</script>
+
 <!-- Bootstrap 4 -->
 <script src="<?= base_url() ?>assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 
@@ -19,15 +29,8 @@
 <script src="<?= base_url() ?>assets/plugins/datatables/jquery.dataTables.js"></script>
 <script src="<?= base_url() ?>assets/plugins/datatables/dataTables.bootstrap4.js"></script>
 
-<!-- Datepicker -->
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script>
-$( function(){
-     $( "#datepicker" ).datepicker({ dateFormat: 'yy-mm-dd' });
-    });
-</script>
 
+<!-- CHECKBOX -->
 <script src="<?= base_url() ?>assets/plugins/iCheck/icheck.min.js"></script>
 <script>
 $(document).ready(function(){
