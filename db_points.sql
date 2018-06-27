@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 26 Jun 2018 pada 09.52
+-- Generation Time: 27 Jun 2018 pada 04.54
 -- Versi Server: 10.1.10-MariaDB
 -- PHP Version: 7.0.3
 
@@ -48,7 +48,7 @@ INSERT INTO `member` (`kd_member`, `nama_lengkap`, `tempat_lhr`, `tgl_lhr`, `jk`
 ('M002', 'Batman', 'nawd', '1998-08-08', 'l', 'awd', '12', 'awd@awd', '2018-05-26', 1),
 ('M003', 'WW', 'Denpasar', '1998-07-24', 'p', 'Jl. Mahendradatta', '8080', 'test@gmail.com', '2018-06-26', 1),
 ('M004', 'Membership', 'Denpasar', '1998-09-09', 'l', 'Jln. Members', '0812082', 'member@member.id', '2018-06-26', 1),
-('M006', 'Bayu', 'Dps', '2000-09-09', 'l', 'Jl. Panjer', '08121012', 'email@email.com', '2018-06-26', 1);
+('M006', 'Roni Antara', 'Dps', '2000-09-09', 'l', 'Jl. Panjer', '08121012', 'email@email.com', '2018-06-26', 1);
 
 -- --------------------------------------------------------
 
@@ -72,7 +72,11 @@ CREATE TABLE `points` (
 
 INSERT INTO `points` (`id`, `kd_member`, `tgl`, `id_user`, `nominal`, `nota`, `point`) VALUES
 (3, 'M004', '2018-06-26', 2, 50000, 'N004', 50),
-(4, 'M002', '2018-06-26', 2, 30000, 'N002', 30);
+(4, 'M002', '2018-06-26', 2, 30000, 'N002', 30),
+(5, 'M002', '2018-06-25', 1, 30000, 'NOTA0001', 30),
+(6, 'M004', '2018-06-27', 1, 150000, 'NOTA0002', 150),
+(7, 'M003', '2018-06-27', 1, 300000, 'NOTA003', 300),
+(8, 'M006', '2018-06-28', 1, 250000, 'NOTA006', 250);
 
 -- --------------------------------------------------------
 
@@ -129,7 +133,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `points`
 --
 ALTER TABLE `points`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `user`
 --
