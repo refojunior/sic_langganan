@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 27 Jun 2018 pada 04.54
+-- Generation Time: 02 Jul 2018 pada 08.47
 -- Versi Server: 10.1.10-MariaDB
 -- PHP Version: 7.0.3
 
@@ -19,6 +19,27 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_points`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `hadiah`
+--
+
+CREATE TABLE `hadiah` (
+  `kd_hadiah` varchar(10) NOT NULL,
+  `nama_hadiah` varchar(200) NOT NULL,
+  `ketentuan_poin` int(11) NOT NULL,
+  `stok` int(11) NOT NULL,
+  `stat` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `hadiah`
+--
+
+INSERT INTO `hadiah` (`kd_hadiah`, `nama_hadiah`, `ketentuan_poin`, `stok`, `stat`) VALUES
+('B001', 'Boneka Teddy Bear', 50, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -57,6 +78,39 @@ INSERT INTO `member` (`kd_member`, `nama_lengkap`, `tempat_lhr`, `tgl_lhr`, `jk`
 --
 
 CREATE TABLE `points` (
+  `kd_member` varchar(11) NOT NULL,
+  `jumlah_poin` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `points`
+--
+
+INSERT INTO `points` (`kd_member`, `jumlah_poin`) VALUES
+('M002', 280),
+('M006', 150);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `trans_penukaran`
+--
+
+CREATE TABLE `trans_penukaran` (
+  `kd_tukar` int(11) NOT NULL,
+  `kd_member` int(11) NOT NULL,
+  `kd_hadiah` int(11) NOT NULL,
+  `tgl` date NOT NULL,
+  `id_user` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `trans_points`
+--
+
+CREATE TABLE `trans_points` (
   `id` int(11) NOT NULL,
   `kd_member` varchar(11) NOT NULL,
   `tgl` date NOT NULL,
@@ -67,16 +121,14 @@ CREATE TABLE `points` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `points`
+-- Dumping data untuk tabel `trans_points`
 --
 
-INSERT INTO `points` (`id`, `kd_member`, `tgl`, `id_user`, `nominal`, `nota`, `point`) VALUES
-(3, 'M004', '2018-06-26', 2, 50000, 'N004', 50),
-(4, 'M002', '2018-06-26', 2, 30000, 'N002', 30),
-(5, 'M002', '2018-06-25', 1, 30000, 'NOTA0001', 30),
-(6, 'M004', '2018-06-27', 1, 150000, 'NOTA0002', 150),
-(7, 'M003', '2018-06-27', 1, 300000, 'NOTA003', 300),
-(8, 'M006', '2018-06-28', 1, 250000, 'NOTA006', 250);
+INSERT INTO `trans_points` (`id`, `kd_member`, `tgl`, `id_user`, `nominal`, `nota`, `point`) VALUES
+(1, 'M002', '2018-07-02', 1, 200000, 'N002', 200),
+(2, 'M002', '2018-07-02', 1, 30000, 'N004', 30),
+(3, 'M006', '2018-07-02', 1, 100000, 'N006', 100),
+(4, 'M006', '2018-07-02', 1, 50000, 'N0062', 50);
 
 -- --------------------------------------------------------
 
@@ -107,6 +159,12 @@ INSERT INTO `user` (`id`, `username`, `password`, `level`, `stat`) VALUES
 --
 
 --
+-- Indexes for table `hadiah`
+--
+ALTER TABLE `hadiah`
+  ADD PRIMARY KEY (`kd_hadiah`);
+
+--
 -- Indexes for table `member`
 --
 ALTER TABLE `member`
@@ -116,6 +174,18 @@ ALTER TABLE `member`
 -- Indexes for table `points`
 --
 ALTER TABLE `points`
+  ADD UNIQUE KEY `id_member` (`kd_member`);
+
+--
+-- Indexes for table `trans_penukaran`
+--
+ALTER TABLE `trans_penukaran`
+  ADD PRIMARY KEY (`kd_tukar`);
+
+--
+-- Indexes for table `trans_points`
+--
+ALTER TABLE `trans_points`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -130,10 +200,15 @@ ALTER TABLE `user`
 --
 
 --
--- AUTO_INCREMENT for table `points`
+-- AUTO_INCREMENT for table `trans_penukaran`
 --
-ALTER TABLE `points`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+ALTER TABLE `trans_penukaran`
+  MODIFY `kd_tukar` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `trans_points`
+--
+ALTER TABLE `trans_points`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `user`
 --
