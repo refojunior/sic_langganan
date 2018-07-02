@@ -36,6 +36,19 @@ switch ($_GET['to']) {
 			pesan("danger", "Tidak dapat mengakses halaman sembarangan", base_url('users.php'));
 		}
 		break;
+
+	case 'hadiah' :
+		if(isset($_GET['kd'])){
+			$kd = $_GET['kd'];
+			$get = $db->query("SELECT * FROM hadiah WHERE kd_hadiah = '$kd'");
+			if($get->rowCount()<> 0){
+				$query = $db->query("UPDATE hadiah set stat = 0 where kd_hadiah = '$kd'");
+				pesan("success", "Data berhasil dihapus", base_url('hadiah.php'));
+			} else {
+				pesan("warning", "Data tidak ditemukan", base_url('hadiah.php'));
+			}
+		}
+		break;
 	
 	default:
 		# code...

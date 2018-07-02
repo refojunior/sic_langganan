@@ -78,7 +78,17 @@ switch ($_GET['to']) {
 		break;
 
 	case 'hadiah' :
-		echo "wkwk";
+		$kd_hadiah = $_POST['kd_hadiah'];
+		$nama_hadiah = $_POST['nama_hadiah'];
+		$ketentuan_poin = $_POST['ketentuan_poin'];
+		$stok = $_POST['stok'];
+
+		if($kd_hadiah == '' && $nama_hadiah == '' && $ketentuan_poin == ''){
+			pesan("danger", "Mohon memasukan seluruh data pada form", base_url('hadiah.php'));
+		} else {
+			$ins = $db->query("INSERT INTO hadiah VALUES ('$kd_hadiah', '$nama_hadiah', '$ketentuan_poin', '$stok', 1) ");
+			pesan("success", "Data Hadiah berhasil ditambahkan!", base_url('hadiah.php'));
+		}
 
 		break;
 	

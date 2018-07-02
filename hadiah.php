@@ -67,7 +67,7 @@ require_once 'layout/sidebar.php';
         <div class="card card-primary">
             <div id="collapseMember" class="panel-collapse ">
               	<div class="card-body">
-	                <form action="proses/edit.php?to=hadiah" method="post">
+	                <form action="proses/edit.php?to=hadiah&kd=<?= $row['kd_hadiah'] ?>" method="post">
 	                	<div class="row">
 	                		<div class="card-body col-md-12">
 							  <div class="form-group">

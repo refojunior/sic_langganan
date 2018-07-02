@@ -34,6 +34,22 @@ switch ($_GET['to']) {
 		$unblock = $db->query("UPDATE member set stat=1 where kd_member= '$kd'");
 		pesan('success', 'Proses unblock berhasil', base_url('blocked.php'));
 		break;
+
+	case 'hadiah': 
+		$kd = $_GET['kd'];
+		$kd_hadiah = $_POST['kd_hadiah'];
+		$nama_hadiah = $_POST['nama_hadiah'];
+		$ketentuan_poin = $_POST['ketentuan_poin'];
+		$stok = $_POST['stok'];
+
+		$upd = $db->query("UPDATE hadiah SET kd_hadiah = '$kd_hadiah', nama_hadiah='$nama_hadiah', ketentuan_poin='$ketentuan_poin', stok='$stok' WHERE kd_hadiah = '$kd' ");
+		if($upd){
+			pesan("success", "Data Hadiah berhasil di update", base_url('hadiah.php'));
+		} else {
+			pesan("danger", "Data hadiah gagal di update", base_url('hadiah.php'));
+		}
+
+	break;
 	
 	default:
 		# code...
