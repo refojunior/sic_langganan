@@ -26,11 +26,11 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link <?= ($title=='Laporan Points' || $title=='Laporan Members') ? '' : 'active' ?>">
+          <li class="nav-item has-treeview menu-<?= ($title=='Dashboard' || $title=='Members' || $title=='Users' || $title=='Hadiah') ? 'open' : '' ?>">
+            <a href="#" class="nav-link <?= ($title=='Dashboard' || $title=='Members' || $title=='Users' || $title=='Hadiah') ? 'active' : '' ?>">
               <i class="nav-icon fa fa-circle-o"></i>
               <p>
-                MENU
+                MASTER DATA
                 <i class="right fa fa-angle-left"></i>
               </p>
             </a>
@@ -48,9 +48,9 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?= base_url('points.php') ?>" class="nav-link <?= ($title=='Points') ? 'active' : '' ?>">
-                  <i class="fa fa-database nav-icon"></i>
-                  <p>Points</p>
+                <a href="<?= base_url('hadiah.php') ?>" class="nav-link <?= ($title=='Hadiah') ? 'active' : '' ?>">
+                  <i class="fa fa-archive nav-icon"></i>
+                  <p>Hadiah</p>
                 </a>
               </li>
               
@@ -61,6 +61,35 @@
                   <p>User</p>
                 </a>
               </li>
+              <?php } ?>
+            </ul>
+          </li>
+          <div class="dropdown-divider"></div>
+          <li class="nav-item has-treeview menu-<?= ($title=='Points' || $title=='Blocked' || $title=='Penukaran') ? 'open' : '' ?>">
+            <a href="#" class="nav-link <?= ($title=='Points' || $title=='Blocked' || $title=='Penukaran') ? 'active' : '' ?>">
+              <i class="nav-icon fa fa-circle-o"></i>
+              <p>
+                TRANSAKSI
+                <i class="right fa fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+             
+              <li class="nav-item">
+                <a href="<?= base_url('points.php') ?>" class="nav-link <?= ($title=='Points') ? 'active' : '' ?>">
+                  <i class="fa fa-database nav-icon"></i>
+                  <p>Points</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?= base_url('penukaran.php') ?>" class="nav-link <?= ($title=='Penukaran') ? 'active' : '' ?>">
+                  <i class="fa fa-cart-plus nav-icon"></i>
+                  <p>Penukaran</p>
+                </a>
+              </li>
+              
+              <?php if($_SESSION['level'] == 'admin'){ ?>
+             
               <li class="nav-item">
                 <a href="blocked.php" class="nav-link <?= ($title=='Blocked') ? 'active' : '' ?>">
                   <i class="fa fa-ban nav-icon"></i>
@@ -71,7 +100,7 @@
             </ul>
           </li>
           <div class="dropdown-divider"></div>
-          <li class="nav-item has-treeview menu-open">
+          <li class="nav-item has-treeview menu-<?= ($title=='Laporan Points' || $title=='Laporan Members') ? 'open' : '' ?>">
             <a href="" class="nav-link <?= ($title=='Laporan Points' || $title=='Laporan Members') ? 'active' : '' ?>">
               <i class="nav-icon fa fa-circle-o"></i>
               <p>

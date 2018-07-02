@@ -7,7 +7,7 @@ $dbpass = '';
 $dbname = 'db_points';
 $db = new PDO("mysql:host=$dbhost;dbname=$dbname;charset=utf8",$dbuser,$dbpass);
 
-define("BASE_URL", "http://localhost/sic_langganan/");
+define("BASE_URL", "http://192.168.1.22/sic_langganan/");
 
 date_default_timezone_set("Asia/Makassar");
 

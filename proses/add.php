@@ -45,7 +45,15 @@ switch ($_GET['to']) {
 		if($kd_member=='' && $nominal==''){
 			pesan("danger", "Harap isi seluruh form yang di sediakan!!", base_url('points.php'));
 		} else {
-			$ins = $db->query("INSERT INTO points values ('', '$kd_member', '$tgl', '$id_user', '$nominal', '$nota', '$point')");
+			//MASUKAN ATAU EDIT KE TABEL POIN
+			$cek_points = $db->query("SELECT * from points WHERE kd_member='$kd_member'");
+			if($cek_points->rowCount() == 0){
+				$ins = $db->query("INSERT INTO points VALUES ('$kd_member', '$point') ");
+			} else {
+				$ins = $db->query("UPDATE points set jumlah_poin = jumlah_poin + '$point' ");
+			}
+			//masuk tabel transaksi poin
+			$ins = $db->query("INSERT INTO trans_points values ('', '$kd_member', '$tgl', '$id_user', '$nominal', '$nota', '$point')");
 			if($ins){
 				pesan("success", "Data point sukses ditambahkan", base_url('points.php'));
 			} else {
@@ -66,6 +74,11 @@ switch ($_GET['to']) {
 			$ins = $db->query("INSERT INTO user VALUES ('','$username', '$password', '$level', 1)");
 			pesan("success", "Data user berhasil ditambahkan", base_url('users.php'));
 		}
+
+		break;
+
+	case 'hadiah' :
+		echo "wkwk";
 
 		break;
 	

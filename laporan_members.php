@@ -17,7 +17,7 @@ require_once 'layout/sidebar.php';
 
 if(isset($_GET['kd'])){
 	$kd_member = $_GET['kd'];
-	$get_mem = $db->query("SELECT * FROM points a inner join member b on a.kd_member=b.kd_member where a.kd_member='$kd_member' "); 
+	$get_mem = $db->query("SELECT * FROM trans_points a inner join member b on a.kd_member=b.kd_member where a.kd_member='$kd_member' "); 
 	$no=1;
 	$modal=1;
 	 ?>
@@ -88,7 +88,7 @@ if(isset($_GET['kd'])){
       				</tr>
       			</thead>
       			<tbody>
-      				<?php $tops = $db->query("SELECT a.kd_member, b.nama_lengkap,  SUM(a.point) as poin from points a inner join member b on a.kd_member=b.kd_member group by kd_member order by poin desc  ");
+      				<?php $tops = $db->query("SELECT a.kd_member, b.nama_lengkap,  SUM(a.point) as poin from trans_points a inner join member b on a.kd_member=b.kd_member group by kd_member order by poin desc  ");
       					$no=1;
       					foreach($tops as $data){
       			 	?>

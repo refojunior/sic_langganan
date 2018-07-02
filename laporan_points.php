@@ -76,7 +76,7 @@ require_once 'layout/sidebar.php';
 	      				<?php
 	      					
 	      					$no = 1;
-	      					$lap = $db->query("SELECT * FROM points INNER JOIN member on points.kd_member = member.kd_member WHERE points.tgl BETWEEN '$dari' and '$sampai' ORDER by tgl desc ");
+	      					$lap = $db->query("SELECT * FROM trans_points INNER JOIN member on trans_points.kd_member = member.kd_member WHERE trans_points.tgl BETWEEN '$dari' and '$sampai' ORDER by tgl desc ");
 	      					foreach($lap as $data){
 	      				 ?>
 		      				<tr>
