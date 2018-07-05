@@ -100,8 +100,9 @@
             </ul>
           </li>
           <div class="dropdown-divider"></div>
-          <li class="nav-item has-treeview menu-<?= ($title=='Laporan Points' || $title=='Laporan Members') ? 'open' : '' ?>">
-            <a href="" class="nav-link <?= ($title=='Laporan Points' || $title=='Laporan Members') ? 'active' : '' ?>">
+          <li class="nav-item has-treeview menu-<?= ($title=='Laporan Points' || $title=='Laporan Members' || 
+          $title=='History' || $title=='Laporan Penukaran' ) ? 'open' : '' ?>">
+            <a href="" class="nav-link <?= ($title=='Laporan Points' || $title=='Laporan Members' || $title=='History' || $title=='Laporan Penukaran') ? 'active' : '' ?>">
               <i class="nav-icon fa fa-circle-o"></i>
               <p>
                 Laporan
@@ -111,12 +112,17 @@
             <ul class="nav nav-treeview">
               <li class="nav-item ">
                 <a href="<?= base_url('laporan_points.php') ?>" class="nav-link <?= ($title=='Laporan Points') ? 'active' : '' ?>">
-                  <p>> Points</p>
+                  <p><i class="fa fa-angle-double-right"></i>Transaksi Points</p>
+                </a>
+              </li>
+              <li class="nav-item ">
+                <a href="<?= base_url('laporan_penukaran.php') ?>" class="nav-link <?= ($title=='Laporan Penukaran') ? 'active' : '' ?>">
+                  <p><i class="fa fa-angle-double-right"></i> Transaksi Penukaran</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?= base_url('laporan_members.php') ?>" class="nav-link <?= ($title=='Laporan Members') ? 'active' : '' ?>">
-                  <p>> Members</p>
+                <a href="<?= base_url('laporan_members.php') ?>" class="nav-link <?= ($title=='Laporan Members' || $title=='History') ? 'active' : '' ?>">
+                  <p><i class="fa fa-angle-double-right"></i> History Members</p>
                 </a>
               </li>
               

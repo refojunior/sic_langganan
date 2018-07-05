@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 02 Jul 2018 pada 08.47
+-- Generation Time: 05 Jul 2018 pada 10.54
 -- Versi Server: 10.1.10-MariaDB
 -- PHP Version: 7.0.3
 
@@ -39,7 +39,38 @@ CREATE TABLE `hadiah` (
 --
 
 INSERT INTO `hadiah` (`kd_hadiah`, `nama_hadiah`, `ketentuan_poin`, `stok`, `stat`) VALUES
-('B001', 'Boneka Teddy Bear', 50, 3, 1);
+('B001', 'Boneka Teddy Bear', 50, 3, 1),
+('B002', 'Boneka Unicorn', 150, 4, 1),
+('B003', 'Skin Superman Godfall', 300, 0, 1),
+('H0008', 'Kaos Supreme', 1500, 6, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `log`
+--
+
+CREATE TABLE `log` (
+  `id_log` int(11) NOT NULL,
+  `kd_member` varchar(10) NOT NULL,
+  `dapat_tukar` enum('1','0') NOT NULL,
+  `value` int(11) NOT NULL,
+  `tanggal` date NOT NULL,
+  `ket` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `log`
+--
+
+INSERT INTO `log` (`id_log`, `kd_member`, `dapat_tukar`, `value`, `tanggal`, `ket`) VALUES
+(1, 'M002', '1', 500, '2018-07-05', 'N001'),
+(2, 'M002', '1', 50, '2018-07-05', 'N002'),
+(3, 'M002', '0', 50, '2018-07-06', 'B001'),
+(4, 'M002', '0', 150, '2018-07-07', 'B002'),
+(5, 'M003', '1', 150, '2018-07-05', 'N00W3'),
+(6, 'M003', '1', 300, '2018-07-05', 'N04W'),
+(7, 'M003', '0', 300, '2018-07-05', 'B003');
 
 -- --------------------------------------------------------
 
@@ -66,9 +97,9 @@ CREATE TABLE `member` (
 
 INSERT INTO `member` (`kd_member`, `nama_lengkap`, `tempat_lhr`, `tgl_lhr`, `jk`, `alamat`, `no_telp`, `email`, `created`, `stat`) VALUES
 ('M001', 'Superman', 'dps', '2018-06-01', 'l', 'Jl. Dps', '0811111', 'Superman@email.id', '2018-06-25', 0),
-('M002', 'Batman', 'nawd', '1998-08-08', 'l', 'awd', '12', 'awd@awd', '2018-05-26', 1),
-('M003', 'WW', 'Denpasar', '1998-07-24', 'p', 'Jl. Mahendradatta', '8080', 'test@gmail.com', '2018-06-26', 1),
-('M004', 'Membership', 'Denpasar', '1998-09-09', 'l', 'Jln. Members', '0812082', 'member@member.id', '2018-06-26', 1),
+('M002', 'Ayang', 'nawd', '1998-08-08', 'l', 'awd', '12', 'awd@awd', '2018-05-26', 1),
+('M003', 'Wonder', 'Denpasar', '1998-07-24', 'p', 'Jl. Mahendradatta', '8080', 'test@gmail.com', '2018-06-26', 1),
+('M004', 'Zephys', 'Denpasar', '1998-09-09', 'l', 'Jln. Members', '0812082', 'member@member.id', '2018-06-26', 1),
 ('M006', 'Roni Antara', 'Dps', '2000-09-09', 'l', 'Jl. Panjer', '08121012', 'email@email.com', '2018-06-26', 1);
 
 -- --------------------------------------------------------
@@ -87,8 +118,8 @@ CREATE TABLE `points` (
 --
 
 INSERT INTO `points` (`kd_member`, `jumlah_poin`) VALUES
-('M002', 280),
-('M006', 150);
+('M002', 650),
+('M003', 150);
 
 -- --------------------------------------------------------
 
@@ -98,11 +129,20 @@ INSERT INTO `points` (`kd_member`, `jumlah_poin`) VALUES
 
 CREATE TABLE `trans_penukaran` (
   `kd_tukar` int(11) NOT NULL,
-  `kd_member` int(11) NOT NULL,
-  `kd_hadiah` int(11) NOT NULL,
+  `kd_member` varchar(11) NOT NULL,
+  `kd_hadiah` varchar(11) NOT NULL,
   `tgl` date NOT NULL,
   `id_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `trans_penukaran`
+--
+
+INSERT INTO `trans_penukaran` (`kd_tukar`, `kd_member`, `kd_hadiah`, `tgl`, `id_user`) VALUES
+(1, 'M002', 'B001', '2018-07-05', 1),
+(2, 'M002', 'B002', '2018-07-05', 1),
+(3, 'M003', 'B003', '2018-07-05', 1);
 
 -- --------------------------------------------------------
 
@@ -125,10 +165,10 @@ CREATE TABLE `trans_points` (
 --
 
 INSERT INTO `trans_points` (`id`, `kd_member`, `tgl`, `id_user`, `nominal`, `nota`, `point`) VALUES
-(1, 'M002', '2018-07-02', 1, 200000, 'N002', 200),
-(2, 'M002', '2018-07-02', 1, 30000, 'N004', 30),
-(3, 'M006', '2018-07-02', 1, 100000, 'N006', 100),
-(4, 'M006', '2018-07-02', 1, 50000, 'N0062', 50);
+(1, 'M002', '2018-07-05', 1, 500000, 'N0001', 500),
+(2, 'M002', '2018-07-05', 1, 50000, 'N0002', 50),
+(3, 'M003', '2018-07-05', 1, 150000, 'N00W3', 150),
+(4, 'M003', '2018-07-05', 1, 300000, 'N04W', 300);
 
 -- --------------------------------------------------------
 
@@ -163,6 +203,12 @@ INSERT INTO `user` (`id`, `username`, `password`, `level`, `stat`) VALUES
 --
 ALTER TABLE `hadiah`
   ADD PRIMARY KEY (`kd_hadiah`);
+
+--
+-- Indexes for table `log`
+--
+ALTER TABLE `log`
+  ADD PRIMARY KEY (`id_log`);
 
 --
 -- Indexes for table `member`
@@ -200,10 +246,15 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `log`
+--
+ALTER TABLE `log`
+  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
 -- AUTO_INCREMENT for table `trans_penukaran`
 --
 ALTER TABLE `trans_penukaran`
-  MODIFY `kd_tukar` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `kd_tukar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `trans_points`
 --

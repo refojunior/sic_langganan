@@ -123,7 +123,7 @@ require_once 'layout/sidebar.php';
             <tr>
               <td><?= $row['kd_hadiah'] ?></td>
               <td><?= ucwords($row['nama_hadiah']) ?></td>
-              <td><?= $row['ketentuan_poin'] ?></td>
+              <td><?= number_format($row['ketentuan_poin']) ?></td>
               <td><?= $row['stok'] ?></td>
               <td>
               	<a href="hadiah.php?kd=<?= $row['kd_hadiah'] ?>" class="btn btn-warning btn-sm">

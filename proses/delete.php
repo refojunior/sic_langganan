@@ -43,9 +43,9 @@ switch ($_GET['to']) {
 			$get = $db->query("SELECT * FROM hadiah WHERE kd_hadiah = '$kd'");
 			if($get->rowCount()<> 0){
 				$query = $db->query("UPDATE hadiah set stat = 0 where kd_hadiah = '$kd'");
-				pesan("success", "Data berhasil dihapus", base_url('hadiah.php'));
+				pesan("success", "Data hadiah berhasil dihapus", base_url('hadiah.php'));
 			} else {
-				pesan("warning", "Data tidak ditemukan", base_url('hadiah.php'));
+				pesan("warning", "Data hadiah tidak ditemukan", base_url('hadiah.php'));
 			}
 		}
 		break;

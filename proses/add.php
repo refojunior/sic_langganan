@@ -45,6 +45,8 @@ switch ($_GET['to']) {
 		if($kd_member=='' && $nominal==''){
 			pesan("danger", "Harap isi seluruh form yang di sediakan!!", base_url('points.php'));
 		} else {
+			//INSERT KE TABEL LOG 
+			$log = $db->query("INSERT into log VALUES ('', '$kd_member', '1', '$point', '$tgl', '$nota')");
 			//MASUKAN ATAU EDIT KE TABEL POIN
 			$cek_points = $db->query("SELECT * from points WHERE kd_member='$kd_member'");
 			if($cek_points->rowCount() == 0){
@@ -89,6 +91,45 @@ switch ($_GET['to']) {
 			$ins = $db->query("INSERT INTO hadiah VALUES ('$kd_hadiah', '$nama_hadiah', '$ketentuan_poin', '$stok', 1) ");
 			pesan("success", "Data Hadiah berhasil ditambahkan!", base_url('hadiah.php'));
 		}
+
+		break;
+
+	case 'penukaran' : 
+		$kd_member = $_POST['kd_member'];
+		$kd_hadiah = $_POST['kd_hadiah'];
+		$jml_tkr = $_POST['stok'];
+		$user = $_SESSION['id'];
+		$tgl = date('Y-m-d');
+
+		//cek poin member
+		$poin = $db->query("SELECT * FROM points WHERE kd_member = '$kd_member' ");
+		$hadiah = $db->query("SELECT * FROM hadiah WHERE kd_hadiah = '$kd_hadiah' ")->fetch();
+		if($poin->rowCount()==0){
+			pesan("warning", "Member tersebut belum meiliki point sedikitpun", base_url('penukaran.php'));
+		} else {
+			$data = $poin->fetch();
+			$jmlPoin = $data['jumlah_poin'];
+			$ketentuan = $hadiah['ketentuan_poin'] * $jml_tkr;
+			
+			if($jmlPoin >= $ketentuan){
+				//check stok barang 
+				if($jml_tkr > $hadiah['stok']){
+					pesan("warning", "Stok Hadiah tidak mencukupi!", base_url('penukaran.php'));
+				} else {
+					//insert ke tabel transaksi penukaran
+					$tukar = $db->query("INSERT INTO trans_penukaran VALUES ('', '$kd_member', '$kd_hadiah', '$tgl', '$user') ");
+					$updatePoin = $db->query("UPDATE points SET jumlah_poin = jumlah_poin - '$ketentuan' WHERE kd_member = '$kd_member' ");
+					$updateStok = $db->query("UPDATE hadiah SET stok = stok - '$jml_tkr' WHERE kd_hadiah = '$kd_hadiah' ");
+					//INSERT KE TABEL LOG 
+					$log = $db->query("INSERT into log VALUES ('', '$kd_member', '0', '$ketentuan', '$tgl', '$kd_hadiah')");
+
+					pesan("success", "Transaksi Penukaran Berhasil", base_url('penukaran.php'));
+				}
+			} else {
+				pesan("danger", "Poin member tersebut tidak cukup!", base_url('penukaran.php'));
+			}
+		}
+		
 
 		break;
 	

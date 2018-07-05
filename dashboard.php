@@ -25,14 +25,14 @@ require_once 'proses/calculation.php';
             <!-- small card -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3><?=  $total_point['poin']; ?></h3>
+                <h3><?=  $total_hadiah['stock']; ?></h3>
 
-                <p>Total Seluruh Point</p>
+                <p>Stock Hadiah</p>
               </div>
               <div class="icon">
                 <i class="fa fa-shopping-cart"></i>
               </div>
-              <a href="<?= base_url('laporan_points.php'); ?>" class="small-box-footer">
+              <a href="<?= base_url('hadiah.php'); ?>" class="small-box-footer">
                 More info <i class="fa fa-arrow-circle-right"></i>
               </a>
             </div>

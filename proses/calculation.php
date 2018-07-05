@@ -15,6 +15,9 @@ $bulanIni = $db->query("SELECT * FROM member where created like '$thisMonth%' ")
 $blocked = $db->query("SELECT * FROM member WHERE stat != 1")->rowCount();
 
 
+//total hadiah (baru)
+$total_hadiah = $db->query("SELECT sum(stok) as stock FROM hadiah")->fetch(PDO::FETCH_ASSOC);
+
 
 
  ?>
