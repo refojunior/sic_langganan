@@ -39,6 +39,7 @@ switch ($_GET['to']) {
 		$nominal = $_POST['nominal'];
 		//menghitung point yg di dapat berdasarkan nominal
 		$point = $nominal / 1000;
+
 		$id_user = $_SESSION['id'];
 		$tgl = date('Y-m-d');
 
@@ -52,7 +53,7 @@ switch ($_GET['to']) {
 			if($cek_points->rowCount() == 0){
 				$ins = $db->query("INSERT INTO points VALUES ('$kd_member', '$point') ");
 			} else {
-				$ins = $db->query("UPDATE points set jumlah_poin = jumlah_poin + '$point' ");
+				$ins = $db->query("UPDATE points set jumlah_poin = jumlah_poin + '$point' WHERE kd_member = '$kd_member' ");
 			}
 			//masuk tabel transaksi poin
 			$ins = $db->query("INSERT INTO trans_points values ('', '$kd_member', '$tgl', '$id_user', '$nominal', '$nota', '$point')");

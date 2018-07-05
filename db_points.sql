@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 05 Jul 2018 pada 10.54
--- Versi Server: 10.1.10-MariaDB
--- PHP Version: 7.0.3
+-- Generation Time: 05 Jul 2018 pada 14.23
+-- Versi Server: 10.1.16-MariaDB
+-- PHP Version: 7.0.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -64,13 +64,9 @@ CREATE TABLE `log` (
 --
 
 INSERT INTO `log` (`id_log`, `kd_member`, `dapat_tukar`, `value`, `tanggal`, `ket`) VALUES
-(1, 'M002', '1', 500, '2018-07-05', 'N001'),
-(2, 'M002', '1', 50, '2018-07-05', 'N002'),
-(3, 'M002', '0', 50, '2018-07-06', 'B001'),
-(4, 'M002', '0', 150, '2018-07-07', 'B002'),
-(5, 'M003', '1', 150, '2018-07-05', 'N00W3'),
-(6, 'M003', '1', 300, '2018-07-05', 'N04W'),
-(7, 'M003', '0', 300, '2018-07-05', 'B003');
+(1, 'M002', '1', 900, '2018-07-05', 'N0A1'),
+(2, 'M002', '1', 350, '2018-07-05', 'N0A2'),
+(3, 'M010', '1', 850, '2018-07-05', 'N0J01');
 
 -- --------------------------------------------------------
 
@@ -100,7 +96,8 @@ INSERT INTO `member` (`kd_member`, `nama_lengkap`, `tempat_lhr`, `tgl_lhr`, `jk`
 ('M002', 'Ayang', 'nawd', '1998-08-08', 'l', 'awd', '12', 'awd@awd', '2018-05-26', 1),
 ('M003', 'Wonder', 'Denpasar', '1998-07-24', 'p', 'Jl. Mahendradatta', '8080', 'test@gmail.com', '2018-06-26', 1),
 ('M004', 'Zephys', 'Denpasar', '1998-09-09', 'l', 'Jln. Members', '0812082', 'member@member.id', '2018-06-26', 1),
-('M006', 'Roni Antara', 'Dps', '2000-09-09', 'l', 'Jl. Panjer', '08121012', 'email@email.com', '2018-06-26', 1);
+('M006', 'Roni Antara', 'Dps', '2000-09-09', 'l', 'Jl. Panjer', '08121012', 'email@email.com', '2018-06-26', 1),
+('M010', 'Junior', 'Denpasar', '2017-03-05', 'l', 'Jl. Anywhere', '08111801081', 'Junior@mail.com', '2018-07-05', 1);
 
 -- --------------------------------------------------------
 
@@ -118,8 +115,8 @@ CREATE TABLE `points` (
 --
 
 INSERT INTO `points` (`kd_member`, `jumlah_poin`) VALUES
-('M002', 650),
-('M003', 150);
+('M002', 1250),
+('M010', 850);
 
 -- --------------------------------------------------------
 
@@ -134,15 +131,6 @@ CREATE TABLE `trans_penukaran` (
   `tgl` date NOT NULL,
   `id_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `trans_penukaran`
---
-
-INSERT INTO `trans_penukaran` (`kd_tukar`, `kd_member`, `kd_hadiah`, `tgl`, `id_user`) VALUES
-(1, 'M002', 'B001', '2018-07-05', 1),
-(2, 'M002', 'B002', '2018-07-05', 1),
-(3, 'M003', 'B003', '2018-07-05', 1);
 
 -- --------------------------------------------------------
 
@@ -165,10 +153,9 @@ CREATE TABLE `trans_points` (
 --
 
 INSERT INTO `trans_points` (`id`, `kd_member`, `tgl`, `id_user`, `nominal`, `nota`, `point`) VALUES
-(1, 'M002', '2018-07-05', 1, 500000, 'N0001', 500),
-(2, 'M002', '2018-07-05', 1, 50000, 'N0002', 50),
-(3, 'M003', '2018-07-05', 1, 150000, 'N00W3', 150),
-(4, 'M003', '2018-07-05', 1, 300000, 'N04W', 300);
+(1, 'M002', '2018-07-05', 1, 900000, 'N0A1', 900),
+(2, 'M002', '2018-07-05', 1, 350000, 'N0A2', 350),
+(3, 'M010', '2018-07-05', 1, 850000, 'N0J01', 850);
 
 -- --------------------------------------------------------
 
@@ -249,17 +236,17 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `trans_penukaran`
 --
 ALTER TABLE `trans_penukaran`
-  MODIFY `kd_tukar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `kd_tukar` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `trans_points`
 --
 ALTER TABLE `trans_points`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `user`
 --
