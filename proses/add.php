@@ -118,7 +118,7 @@ switch ($_GET['to']) {
 					pesan("warning", "Stok Hadiah tidak mencukupi!", base_url('penukaran.php'));
 				} else {
 					//insert ke tabel transaksi penukaran
-					$tukar = $db->query("INSERT INTO trans_penukaran VALUES ('', '$kd_member', '$kd_hadiah', '$tgl', '$user') ");
+					$tukar = $db->query("INSERT INTO trans_penukaran VALUES ('', '$kd_member', '$kd_hadiah','$jml_tkr',  '$tgl', '$user') ");
 					$updatePoin = $db->query("UPDATE points SET jumlah_poin = jumlah_poin - '$ketentuan' WHERE kd_member = '$kd_member' ");
 					$updateStok = $db->query("UPDATE hadiah SET stok = stok - '$jml_tkr' WHERE kd_hadiah = '$kd_hadiah' ");
 					//INSERT KE TABEL LOG 

@@ -85,8 +85,8 @@ require_once 'layout/sidebar.php';
 		      					<td><?= $data['kd_member'] ?></td>
 		      					<td><?= $data['nama_lengkap'] ?></td>
 								<td><?= $data['nota'] ?></td>
-								<td><?= $data['nominal'] ?></td>
-								<td><?= $data['point'] ?></td>
+								<td><?= "Rp. ". number_format($data['nominal']) ?></td>
+								<td><?= number_format($data['point']) ?></td>
 		      				</tr>
 		      			<?php } ?>
 	      			</tbody>

@@ -48,7 +48,8 @@ if(isset($_GET['kd'])){
 	      									a.dapat_tukar,
 	      									a.value,
 	      									e.nama_hadiah,
-	      									d.nota
+	      									d.nota,
+	      									c.jml
 	      									FROM log a 
 											INNER JOIN member b on a.kd_member = b.kd_member 
 											LEFT JOIN trans_penukaran c on a.ket = c.kd_hadiah
@@ -66,9 +67,9 @@ if(isset($_GET['kd'])){
 	      						} else {
 	      							$sum = $sum - $data['value'];
 	      							$dt = "<div style='color:red'>Tukar </div>";
-	      							$ket = $data['nama_hadiah'];
+	      							$ket = $data['nama_hadiah']. " (" . $data['jml'] . ")";
 	      						}
-	      				 ?>
+	      				?>
 		      				<tr>
 		      					<td><?= $no++ ?></td>
 		      					<td><?= $data['tanggal'] ?></td>

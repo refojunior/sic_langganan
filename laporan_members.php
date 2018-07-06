@@ -43,8 +43,8 @@ require_once 'layout/sidebar.php';
       					<td><?= $no++ ?></td>
       					<td><?= $data['kd_member'] ?></td>
       					<td><?= $data['nama_lengkap'] ?></td>
-      					<td><?= $data['jumlah_poin'] ?></td>
-      					<td><?= $data['poin'] ?></td>
+      					<td><?= number_format($data['jumlah_poin']) ?></td>
+      					<td><?= number_format($data['poin']) ?></td>
       					<td><a href="history.php?kd=<?= $data['kd_member'] ?>" class="btn btn-info btn-sm">
 	                  		show details
 	                  	</a></td>

@@ -70,7 +70,7 @@ require_once 'layout/sidebar.php';
 	      					<th>Kode</th>
 	      					<th>Nama</th>
 	      					<th>Hadiah</th>
-	      				
+	      					<th>Jumlah</th>
 	      				</tr>
 	      			</thead>
 	      			<tbody>
@@ -86,7 +86,7 @@ require_once 'layout/sidebar.php';
 		      					<td><?= $data['kd_member'] ?></td>
 		      					<td><?= $data['nama_lengkap'] ?></td>
 								<td><?= $data['nama_hadiah'] ?></td>
-								
+								<td><?= $data['jml'] ?></td>
 		      				</tr>
 		      			<?php } ?>
 	      			</tbody>
