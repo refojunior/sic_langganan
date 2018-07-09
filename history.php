@@ -20,7 +20,8 @@ if(isset($_GET['kd'])){
 	<section class="content">
 		<div class="card ">
 	        <div class="card-header">
-	          <h3 class="card-title">Riwayat Member </h3>
+	        	<?php $m = $db->query("SELECT * FROM member WHERE kd_member = '$kd' ")->fetch(); ?>
+	          <h3 class="card-title">Riwayat Member <b> <?= $m['kd_member'] . " - " . $m['nama_lengkap'] ?> </b> </h3>
 	        </div>
 	        <div class="card-body">
 	      		<table id="example1" class="table table-bordered table-striped">
@@ -28,11 +29,9 @@ if(isset($_GET['kd'])){
 	      				<tr>
 	      					<th>No</th>
 	      					<th>Tanggal</th>
-	      					<th>Kode</th>
-	      					<th>Nama</th>
-	      					<th>Dapat / Tukar</th>
+	      					<th>Dapat</th>
+	      					<th>Tukar</th>
 	      					<th>Keterangan</th>
-	      					<th>Value</th>
 	      					<th>Saldo Points</th>
 	      				</tr>
 	      			</thead>
@@ -47,14 +46,10 @@ if(isset($_GET['kd'])){
 	      									a.ket,
 	      									a.dapat_tukar,
 	      									a.value,
-	      									e.nama_hadiah,
-	      									d.nota,
-	      									c.jml
+	      									c.ketentuan_poin
 	      									FROM log a 
-											INNER JOIN member b on a.kd_member = b.kd_member 
-											LEFT JOIN trans_penukaran c on a.ket = c.kd_hadiah
-											LEFT JOIN trans_points d on a.ket = d.nota
-											left JOIN hadiah e on e.kd_hadiah = a.ket 
+											INNER JOIN member b on a.kd_member = b.kd_member
+											LEFT join hadiah c on c.kd_hadiah = a.ket 
 											WHERE a.kd_member = '$kd'
 											ORDER BY a.tanggal asc ");
 
@@ -62,22 +57,23 @@ if(isset($_GET['kd'])){
 	      					foreach($lap as $data){
 	      						if($data['dapat_tukar'] == 1){
 	      							$sum = $sum + $data['value'];
-	      							$dt = "<div style='color:green'>Dapat</div>";
-	      							$ket = "No. Nota : <b>". $data['ket']. "</b>";
+	      							$dapat = "<div style='color:green'>$data[value]</div>";
+	      							$tukar = '';
+	      							$ket = "Nota : <b> $data[ket] </b>";
 	      						} else {
 	      							$sum = $sum - $data['value'];
-	      							$dt = "<div style='color:red'>Tukar </div>";
-	      							$ket = $data['nama_hadiah']. " (" . $data['jml'] . ")";
+	      							$dapat = '';
+	      							$tukar = "<div style='color:red'>$data[value] </div>";
+	      							$banyak = $data['value'] / $data['ketentuan_poin'];
+	      							$ket = "Hadiah : <b> $data[ket] ($banyak) </b>";
 	      						}
 	      				?>
 		      				<tr>
 		      					<td><?= $no++ ?></td>
 		      					<td><?= $data['tanggal'] ?></td>
-		      					<td><?= $data['kd_member'] ?></td>
-		      					<td><?= $data['nama_lengkap'] ?></td>
-								<td><?= $dt ?></td>
+								<td><?= $dapat ?></td>
+								<td><?= $tukar ?></td>
 								<td><?= $ket ?></td>
-								<td><?= $data['value'] ?></td>
 								<td><?= number_format(abs($sum), 0, '', '.') ?></td>
 		      				</tr>
 		      			<?php } ?>

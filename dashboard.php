@@ -80,7 +80,7 @@ require_once 'proses/calculation.php';
                 <p>Member Diblacklist</p>
               </div>
               <div class="icon">
-                <i class="ion ion-pie-graph"></i>
+                <i class="ion ion-close-circled"></i>
               </div>
               <a href="blocked.php" class="small-box-footer">
                 More info <i class="fa fa-arrow-circle-right"></i>
@@ -98,7 +98,19 @@ require_once 'proses/calculation.php';
           <h3 class="card-title">Sistem Informasi Customer Langganan</h3>
         </div>
         <div class="card-body">
-          Sistem ini merupakan sistem yang digunakan untuk menanage data pembelian customer, dimana tiap nominal dari pembelian customer tersebut akan mendapatkan point. Perhitungan pendapatan point didapat dari jumlah nominal, semakin besar nominal pembelian maka akan mendapatkan point lebih banyak pula.
+          <p>
+            Sistem ini merupakan sistem yang digunakan untuk menanage data pembelian customer, dimana tiap nominal dari pembelian customer tersebut akan mendapatkan point. Perhitungan pendapatan point didapat dari jumlah nominal, semakin besar nominal pembelian maka akan mendapatkan point lebih banyak pula.
+          </p>
+          <p>
+            Dalam sistem ini juga dapat melakukan transaksi penukaran poin dengan hadiah, dimana terdapat syarat dan ketentuan dari hadiah yang ingin ditukarkan.
+          </p>
+          <p>
+            Juga ada laporan dari setiap transaksi yang dilakukan untuk mengetahui riwayat dari tiap data yang ada pada sistem, seperti data customer, hadiah, transaksi penukaran, transaksi point dan lain lain
+          </p>
+          <p>
+            Saya harap sistem ini dapat berguna bagi siapapun yang memerlukan, apabila ada yg kurang jelas atau ada yg ingin disampaikan silahkan hubungi saya selaku developer dari sistem ini.
+            
+          </p>
         </div>
      
       </div>

@@ -85,11 +85,14 @@ switch ($_GET['to']) {
 		$nama_hadiah = $_POST['nama_hadiah'];
 		$ketentuan_poin = $_POST['ketentuan_poin'];
 		$stok = $_POST['stok'];
+		$tgl = date('Y-m-d');
 
 		if($kd_hadiah == '' && $nama_hadiah == '' && $ketentuan_poin == ''){
 			pesan("danger", "Mohon memasukan seluruh data pada form", base_url('hadiah.php'));
 		} else {
 			$ins = $db->query("INSERT INTO hadiah VALUES ('$kd_hadiah', '$nama_hadiah', '$ketentuan_poin', '$stok', 1) ");
+			//insert ke tb log hadiah 
+			$log = $db->query("INSERT INTO log_had VALUES ('', '$tgl', '$kd_hadiah', '1', '$stok', 'dari proses input data master', '') ");
 			pesan("success", "Data Hadiah berhasil ditambahkan!", base_url('hadiah.php'));
 		}
 
@@ -123,6 +126,8 @@ switch ($_GET['to']) {
 					$updateStok = $db->query("UPDATE hadiah SET stok = stok - '$jml_tkr' WHERE kd_hadiah = '$kd_hadiah' ");
 					//INSERT KE TABEL LOG 
 					$log = $db->query("INSERT into log VALUES ('', '$kd_member', '0', '$ketentuan', '$tgl', '$kd_hadiah')");
+					//insert ke tabel log hadiah
+					$log_had = $db->query("INSERT INTO log_had VALUES ('', '$tgl', '$kd_hadiah', '0', '$jml_tkr', 'ditukar customer', '$kd_member' ) ");
 
 					pesan("success", "Transaksi Penukaran Berhasil", base_url('penukaran.php'));
 				}

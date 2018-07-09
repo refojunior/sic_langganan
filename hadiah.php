@@ -26,29 +26,29 @@ require_once 'layout/sidebar.php';
 	                <form action="proses/add.php?to=hadiah" method="post">
 	                	<div class="row">
 	                		<div class="card-body col-md-12">
-							  <div class="form-group">
-				                <label>Kode Hadiah</label>
-				                <input type="text" class="form-control" name="kd_hadiah" placeholder="Kode Hadiah">
-				              </div>
-				              <div class="form-group">
-				                <label>Nama Hadiah</label>
-				                <input type="text" class="form-control" name="nama_hadiah" placeholder="Nama Hadiah">
-				              </div>
-				              <div class="form-group">
-				                <label>Ketentuan Poin</label>
-				                <input type="text" class="form-control" name="ketentuan_poin" placeholder="Ketentuan Poin">
-				              </div>
-				              <div class="form-group">
-				                <label>Stok</label>
-				                <input type="text" class="form-control" name="stok" placeholder="Stok">
-				              </div>
+  							        <div class="form-group">
+  				                <label>Kode Hadiah</label>
+  				                <input type="text" class="form-control" name="kd_hadiah" placeholder="Kode Hadiah">
+  				              </div>
+  				              <div class="form-group">
+  				                <label>Nama Hadiah</label>
+  				                <input type="text" class="form-control" name="nama_hadiah" placeholder="Nama Hadiah">
+  				              </div>
+  				              <div class="form-group">
+  				                <label>Ketentuan Poin</label>
+  				                <input type="text" class="form-control" name="ketentuan_poin" placeholder="Ketentuan Poin">
+  				              </div>
+  				              <div class="form-group">
+  				                <label>Stok</label>
+  				                <input type="text" class="form-control" name="stok" placeholder="Stok">
+  				              </div>
 
-				              <div class="form-group">
-								<button type="submit" class="btn btn-success btn-flat">Submit</button>
-							  </div>
-			            	</div>
+  				              <div class="form-group">
+  								        <button type="submit" class="btn btn-success btn-flat">Submit</button>
+  							        </div>
+			            	  </div>
 	               		</div>
-			        </form>
+			            </form>
 			     
               	</div>
             </div>
@@ -70,29 +70,29 @@ require_once 'layout/sidebar.php';
 	                <form action="proses/edit.php?to=hadiah&kd=<?= $row['kd_hadiah'] ?>" method="post">
 	                	<div class="row">
 	                		<div class="card-body col-md-12">
-							  <div class="form-group">
-				                <label>Kode Hadiah</label>
-				                <input type="text" class="form-control" name="kd_hadiah" value="<?= $row['kd_hadiah'] ?>">
-				              </div>
-				              <div class="form-group">
-				                <label>Nama Hadiah</label>
-				                <input type="text" class="form-control" name="nama_hadiah" value="<?= $row['nama_hadiah'] ?>">
-				              </div>
-				              <div class="form-group">
-				                <label>Ketentuan Poin</label>
-				                <input type="text" class="form-control" name="ketentuan_poin" value="<?= $row['ketentuan_poin'] ?>">
-				              </div>
-				              <div class="form-group">
-				                <label>Stok</label>
-				                <input type="text" class="form-control" name="stok" value="<?= $row['stok'] ?>">
-				              </div>
-
-				              <div class="form-group">
-								<button type="submit" class="btn btn-success btn-flat">Submit</button>
-							  </div>
-			            	</div>
+							            <div class="form-group">
+				                    <label>Kode Hadiah</label>
+				                    <input type="text" class="form-control" name="kd_hadiah" value="<?= $row['kd_hadiah'] ?>">
+				                  </div>
+    				              <div class="form-group">
+    				                <label>Nama Hadiah</label>
+    				                <input type="text" class="form-control" name="nama_hadiah" value="<?= $row['nama_hadiah'] ?>">
+    				              </div>
+    				              <div class="form-group">
+    				                <label>Ketentuan Poin</label>
+    				                <input type="text" class="form-control" name="ketentuan_poin" value="<?= $row['ketentuan_poin'] ?>">
+    				              </div>
+                          <div class="form-group">
+                            <label>Stok</label>
+                            <input type="text" class="form-control" name="stok" value="<?= $row['stok'] ?>" readonly>
+                          </div>
+                          
+				                  <div class="form-group">
+			         				    	<button type="submit" class="btn btn-success btn-flat">Submit</button>
+      							       </div>
+			            	    </div>
 	               		</div>
-			        </form>
+			            </form>
 			     
               	</div>
             </div>

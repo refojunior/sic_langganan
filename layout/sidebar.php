@@ -1,7 +1,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="assets/index3.html" class="brand-link">
+    <a href="<?= base_url('dashboard.php') ?>" class="brand-link">
       <img src="<?= base_url(); ?>assets/dist/img/AdminLTELogo.png"
            alt="AdminLTE Logo"
            class="brand-image img-circle elevation-3"
@@ -101,8 +101,8 @@
           </li>
           <div class="dropdown-divider"></div>
           <li class="nav-item has-treeview menu-<?= ($title=='Laporan Points' || $title=='Laporan Members' || 
-          $title=='History' || $title=='Laporan Penukaran' ) ? 'open' : '' ?>">
-            <a href="" class="nav-link <?= ($title=='Laporan Points' || $title=='Laporan Members' || $title=='History' || $title=='Laporan Penukaran') ? 'active' : '' ?>">
+          $title=='History' || $title=='Laporan Penukaran' || $title=='History Hadiah' ) ? 'open' : '' ?>">
+            <a href="" class="nav-link <?= ($title=='Laporan Points' || $title=='Laporan Members' || $title=='History' || $title=='Laporan Penukaran' || $title=='History Hadiah') ? 'active' : '' ?>">
               <i class="nav-icon fa fa-circle-o"></i>
               <p>
                 Laporan
@@ -123,6 +123,11 @@
               <li class="nav-item">
                 <a href="<?= base_url('laporan_members.php') ?>" class="nav-link <?= ($title=='Laporan Members' || $title=='History') ? 'active' : '' ?>">
                   <p><i class="fa fa-angle-double-right"></i> History Members</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?= base_url('laporan_hadiah.php') ?>" class="nav-link <?= ($title=='History Hadiah') ? 'active' : '' ?>">
+                  <p><i class="fa fa-angle-double-right"></i> History Hadiah</p>
                 </a>
               </li>
               
