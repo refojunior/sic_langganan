@@ -65,8 +65,8 @@
             </ul>
           </li>
           <div class="dropdown-divider"></div>
-          <li class="nav-item has-treeview menu-<?= ($title=='Points' || $title=='Blocked' || $title=='Penukaran') ? 'open' : '' ?>">
-            <a href="#" class="nav-link <?= ($title=='Points' || $title=='Blocked' || $title=='Penukaran') ? 'active' : '' ?>">
+          <li class="nav-item has-treeview menu-<?= ($title=='Points' || $title=='Blocked' || $title=='Penukaran' || $title=='Add Hadiah') ? 'open' : '' ?>">
+            <a href="#" class="nav-link <?= ($title=='Points' || $title=='Blocked' || $title=='Penukaran' || $title=='Add Hadiah') ? 'active' : '' ?>">
               <i class="nav-icon fa fa-circle-o"></i>
               <p>
                 TRANSAKSI
@@ -74,6 +74,12 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?= base_url('add-hadiah.php') ?>" class="nav-link <?= ($title=='Add Hadiah') ? 'active' : '' ?>">
+                  <i class="fa fa-plus-square nav-icon"></i>
+                  <p>Add Hadiah</p>
+                </a>
+              </li>
              
               <li class="nav-item">
                 <a href="<?= base_url('points.php') ?>" class="nav-link <?= ($title=='Points') ? 'active' : '' ?>">

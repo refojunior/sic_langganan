@@ -138,6 +138,34 @@ switch ($_GET['to']) {
 		
 
 		break;
+
+	case 'stock' : 
+		$kd_hadiah = $_POST['kd_hadiah'];
+		$jumlah = $_POST['jumlah'];
+		$keterangan = $_POST['keterangan'];
+		$tgl = date('Y-m-d');
+		$user = $_SESSION['id'];
+
+		$query = "INSERT INTO log_had VALUES";
+		$update = "";
+		//insert menggunakan perulangan
+		foreach($kd_hadiah as $key => $val){
+			$data =  "('', '$tgl', '$val', 1,  '$jumlah[$key]', '$keterangan[$key]', '$user'),";
+			$query .= $data;
+
+			$upd = $db->query("UPDATE hadiah set stok = stok + '$jumlah[$key]' WHERE kd_hadiah = '$val'");	
+		}
+		$ins = substr($query, 0, -1). ";";
+		$result = $db->query($ins);
+
+		if($result){
+			pesan("success", "Data stok hadiah berhasil ditambahkan", base_url('add-hadiah.php'));
+		} else {
+			pesan("danger", "Data stok hadiah gagal ditambahkan", base_url('add-hadiah.php'));
+		}
+
+
+		break;
 	
 	default:
 		# code...

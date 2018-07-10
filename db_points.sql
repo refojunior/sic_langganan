@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 09, 2018 at 05:28 AM
+-- Generation Time: Jul 10, 2018 at 04:01 AM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 7.0.3
 
@@ -39,8 +39,11 @@ CREATE TABLE `hadiah` (
 --
 
 INSERT INTO `hadiah` (`kd_hadiah`, `nama_hadiah`, `ketentuan_poin`, `stok`, `stat`) VALUES
-('H001', 'Skin Legend', 300, 3, 1),
-('H002', 'VIP', 150, 3, 1);
+('H001', 'Skin Legend', 300, 13, 1),
+('H002', 'VIP', 150, 33, 1),
+('H003', 'My Hadiah', 80, 9, 1),
+('H004', 'Baju Kaos', 100, 5, 1),
+('H005', 'Celana Dalam', 60, 5, 1);
 
 -- --------------------------------------------------------
 
@@ -66,7 +69,9 @@ INSERT INTO `log` (`id_log`, `kd_member`, `dapat_tukar`, `value`, `tanggal`, `ke
 (2, 'M002', '0', 300, '2018-07-09', 'H001'),
 (3, 'M002', '0', 300, '2018-07-09', 'H001'),
 (4, 'M003', '1', 780, '2018-07-09', 'N0W1'),
-(5, 'M003', '0', 450, '2018-07-09', 'H002');
+(5, 'M003', '0', 450, '2018-07-09', 'H002'),
+(6, 'M010', '1', 350, '2018-07-10', 'N0J1'),
+(7, 'M010', '0', 80, '2018-07-10', 'H003');
 
 -- --------------------------------------------------------
 
@@ -93,7 +98,16 @@ INSERT INTO `log_had` (`id`, `tgl`, `kd_hadiah`, `masuk_keluar`, `jumlah`, `kete
 (2, '2018-07-09', 'H001', '0', 1, 'ditukar customer', 'M002'),
 (3, '2018-07-09', 'H001', '0', 1, 'ditukar customer', 'M002'),
 (4, '2018-07-09', 'H002', '1', 6, 'dari proses input data master', ''),
-(5, '2018-07-09', 'H002', '0', 3, 'ditukar customer', 'M003');
+(5, '2018-07-09', 'H002', '0', 3, 'ditukar customer', 'M003'),
+(6, '2018-07-10', 'H001', '1', 10, 'bagus', '1'),
+(7, '2018-07-10', 'H002', '1', 30, 'baru gan', '1'),
+(8, '2018-07-10', 'H003', '1', 8, 'dari proses input data master', ''),
+(9, '2018-07-10', 'H003', '1', 2, 'ada yang ketinggalan', '1'),
+(10, '2018-07-10', 'H003', '0', 1, 'ditukar customer', 'M010'),
+(11, '2018-07-10', 'H004', '1', 3, 'dari proses input data master', ''),
+(12, '2018-07-10', 'H005', '1', 2, 'dari proses input data master', ''),
+(13, '2018-07-10', 'H004', '1', 2, 'kaos gak bolong', '1'),
+(14, '2018-07-10', 'H005', '1', 3, 'cd bolong', '1');
 
 -- --------------------------------------------------------
 
@@ -145,7 +159,8 @@ CREATE TABLE `points` (
 
 INSERT INTO `points` (`kd_member`, `jumlah_poin`) VALUES
 ('M002', 100),
-('M003', 330);
+('M003', 330),
+('M010', 270);
 
 -- --------------------------------------------------------
 
@@ -169,7 +184,8 @@ CREATE TABLE `trans_penukaran` (
 INSERT INTO `trans_penukaran` (`kd_tukar`, `kd_member`, `kd_hadiah`, `jml`, `tgl`, `id_user`) VALUES
 (1, 'M002', 'H001', 1, '2018-07-09', 1),
 (2, 'M002', 'H001', 1, '2018-07-09', 1),
-(3, 'M003', 'H002', 3, '2018-07-09', 1);
+(3, 'M003', 'H002', 3, '2018-07-09', 1),
+(4, 'M010', 'H003', 1, '2018-07-10', 1);
 
 -- --------------------------------------------------------
 
@@ -193,7 +209,8 @@ CREATE TABLE `trans_points` (
 
 INSERT INTO `trans_points` (`id`, `kd_member`, `tgl`, `id_user`, `nominal`, `nota`, `point`) VALUES
 (1, 'M002', '2018-07-09', 1, 700000, 'N0A1', 700),
-(2, 'M003', '2018-07-09', 1, 780000, 'N0W1', 780);
+(2, 'M003', '2018-07-09', 1, 780000, 'N0W1', 780),
+(3, 'M010', '2018-07-10', 1, 350000, 'N0J1', 350);
 
 -- --------------------------------------------------------
 
@@ -280,22 +297,22 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `log_had`
 --
 ALTER TABLE `log_had`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `trans_penukaran`
 --
 ALTER TABLE `trans_penukaran`
-  MODIFY `kd_tukar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `kd_tukar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `trans_points`
 --
 ALTER TABLE `trans_points`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `user`
 --
