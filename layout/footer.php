@@ -15,8 +15,10 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
 $( function(){
-     $( "#datepicker" ).datepicker({ dateFormat: 'yy-mm-dd' });
-     $( "#datepicker2" ).datepicker({ dateFormat: 'yy-mm-dd' });
+     $( "#datepicker" ).datepicker({ dateFormat: 'yy-mm-dd', changeYear: true,
+      changeMonth: true, yearRange: '1945:'+(new Date).getFullYear() });
+     $( "#datepicker2" ).datepicker({ dateFormat: 'yy-mm-dd', changeYear: true,
+      changeMonth: true, yearRange: '1945:'+(new Date).getFullYear() });
     });
 </script>
 
