@@ -2,6 +2,12 @@
 
 Sistem ini merupakan tugas akhir matakuliah Pemrograman Web. Dibuat menggunakan PHP Native Prosedural agar sesuai kurikulum yang di diajarkan di kelas.
 
+Sistem ini adalah sistem yang digunakan untuk menanage data pembelian customer, dimana tiap nominal dari pembelian customer tersebut akan mendapatkan point. Perhitungan pendapatan point didapat dari jumlah nominal, semakin besar nominal pembelian maka akan mendapatkan point lebih banyak pula.
+
+Dalam sistem ini juga dapat melakukan transaksi penukaran poin dengan hadiah, dimana terdapat syarat dan ketentuan dari hadiah yang ingin ditukarkan.
+
+Juga ada laporan dari setiap transaksi yang dilakukan untuk mengetahui riwayat dari tiap data yang ada pada sistem, seperti data customer, hadiah, transaksi penukaran, transaksi point dan lain lain
+
 Sistem ini masih bisa dikembangkan dan disempurnakan sesuai kebutuhan.
 
 Fiturnya sangat sederhana yaitu : 
