@@ -60,16 +60,3 @@ require_once 'layout/sidebar.php';
 
 <?php require_once('layout/footer.php') ?>
 
-<?php if ($modal == 1) { ?>
-	<script type="text/javascript">
-    $(window).on('load',function(){
-        $('#teacherModal').modal('show');
-    });
-	</script>
-<?php } ?>
-
-<script>
-$(".modal").on("hidden.bs.modal", function(){
-    window.location = "laporan_members.php";
-});
-</script>

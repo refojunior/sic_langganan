@@ -1,7 +1,7 @@
  </div>
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
-      <b>Version</b> 3.0.0-alpha
+      <b>Eat - Sleep - Code</b> | REPEAT
     </div>
     <strong>Copyright &copy; 2018 <a href="http://adminlte.io">Refo & Roni</a>.</strong> All rights
     reserved.

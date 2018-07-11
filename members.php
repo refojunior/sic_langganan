@@ -13,7 +13,83 @@ require_once 'layout/navbar.php';
 
 //sidebar (menu)
 require_once 'layout/sidebar.php';
+$modal = '';
+if(isset($_GET['show'])){
+	$kd = $_GET['show'];
+	$q = $db->query("SELECT * FROM member WHERE kd_member = '$kd' ")->fetch();
+	if($q['jk'] == "l"){
+		$jk =  "Laki - Laki";
+	} else {
+		$jk = "Perempuan";
+	}
+	$modal=1;
+} else {
+	$modal=0;
+}
+
 ?>
+<?php if($modal==1) { ?>
+
+<!-- Modal FOR DETAILS MEMBER -->
+<div class="modal fade" id="memberModal" tabindex="-1" role="dialog" aria-labelledby="memberModalLabel" aria-hidden="true">
+  <div class="modal-dialog " role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-primary">
+        <h5 class="modal-title" id="exampleModalLabel">Detail Member </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table ">
+        	<tr>
+        		<td>Kode Member </td>
+        		<td>:</td>
+        		<td><?= $q['kd_member'] ?></td>
+        	</tr>
+        	<tr>
+        		<td>Nama </td>
+        		<td>:</td>
+        		<td><?= $q['nama_lengkap'] ?></td>
+        	</tr>
+        	<tr>
+        		<td>Tempat & Tanggal Lahir </td>
+        		<td>:</td>
+        		<td><?= $q['tempat_lhr'] . ", ". $q['tgl_lhr'] ?></td>
+        	</tr>
+        	<tr>
+        		<td>Jenis Kelamin </td>
+        		<td>:</td>
+        		<td><?= $jk ?></td>
+        	</tr>
+        	<tr>
+        		<td>Alamat </td>
+        		<td>:</td>
+        		<td><?= $q['alamat'] ?></td>
+        	</tr>
+        	<tr>
+        		<td>No. Telp </td>
+        		<td>:</td>
+        		<td><?= $q['no_telp'] ?></td>
+        	</tr>
+        	<tr>
+        		<td>Email </td>
+        		<td>:</td>
+        		<td><?= $q['email'] ?></td>
+        	</tr>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<?php } ?>
+
+
     <section class="content">
       	<div class="col-md-12">
 	      	<a data-toggle="collapse" href="#collapseMember" class="btn btn-flat btn-primary"><?= (!isset($_GET['kd']) ? 'Add Member' : 'Edit Member') ?></a>
@@ -147,11 +223,8 @@ require_once 'layout/sidebar.php';
 	                <tr>
 	                  <th>Kode</th>
 	                  <th>Nama </th>
-	                  <th>TTL</th>
 	                  <th>JK</th>
-	                  <th>Alamat</th>
 	                  <th>Telp</th>
-	                  <th>Email</th>
 	                  <th>Action</th>
 	                </tr>
                 </thead>
@@ -161,12 +234,10 @@ require_once 'layout/sidebar.php';
 	                <tr>
 	                  <td><?= $row['kd_member'] ?></td>
 	                  <td><?= ucwords($row['nama_lengkap']) ?></td>
-	                  <td><?= ucwords($row['tempat_lhr']).", ".$row['tgl_lhr'] ?></td>
 	                  <td><?= ($row['jk']== 'l' ? 'Laki - Laki' : 'Perempuan') ?></td>
-	                  <td><?= ucwords($row['alamat']) ?></td>
 	                  <td><?= strtoupper($row['no_telp']) ?></td>
-	                  <td><?= $row['email'] ?></td>
 	                  <td>
+	                  	<a href="members.php?show=<?= $row['kd_member'] ?>" class="btn btn-info btn-sm"> details</a>
 	                  	<a href="members.php?kd=<?= $row['kd_member'] ?>" class="btn btn-warning btn-sm">
 	                  		edit
 	                  	</a>
@@ -182,3 +253,18 @@ require_once 'layout/sidebar.php';
           </div>
     </section>
 <?php require_once('layout/footer.php') ?>
+
+
+<?php if ($modal == 1) { ?>
+	<script type="text/javascript">
+    $(window).on('load',function(){
+        $('#memberModal').modal('show');
+    });
+	</script>
+<?php } ?>
+
+<script>
+$(".modal").on("hidden.bs.modal", function(){
+    window.location = "members.php";
+});
+</script>
