@@ -34,9 +34,18 @@ switch ($_GET['to']) {
 		break;
 	
 	case 'points':
-		$kd_member = $_POST['kd_member'];
+		//parsing data agar yang disimpan kode saja
+		$member = $_POST['member'];
+		$members = explode(' ', $member);
+		$kd_member = $members[0];
+
+		//parsing data agar yg di simpan tanpa koma
+		$nominal1 = $_POST['nominal'];
+		$nominal2 = str_replace(',', '', $nominal1);
+		$nominal = $nominal2;
+
 		$nota = $_POST['nota'];
-		$nominal = $_POST['nominal'];
+		
 		//menghitung point yg di dapat berdasarkan nominal
 		$point = $nominal / 1000;
 

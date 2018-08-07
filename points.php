@@ -14,6 +14,28 @@ require_once 'layout/navbar.php';
 //sidebar (menu)
 require_once 'layout/sidebar.php';
 ?>
+
+<style>
+/* style auto complete list */
+.member-ul{
+  margin:0;
+  padding:0;
+  cursor:pointer;
+  list-style:none;
+  background:#f2f2f2;
+}
+
+.member-li {
+  padding:5px 0px 5px 10px;
+  display:block;
+}
+
+.member-li:hover {
+  background:#e5e5e5;
+}
+
+</style>
+
     <section class="content">
       <div class="col-md-6">
         <div class="card card-primary">
@@ -23,16 +45,9 @@ require_once 'layout/sidebar.php';
           <form action="proses/add.php?to=points" method="post">
             <div class="card-body">
               <div class="form-group">
-                <label >Kode Member</label>
-                <select name="kd_member" class="form-control" required>
-                  <option value=""> - PILIH - </option>
-                  <?php $sql = $db->query("SELECT * FROM member where stat = 1"); 
-                      foreach($sql as $col){ ?>
-                        <option value="<?= $col['kd_member'] ?>">
-                          <?= $col['kd_member']." - ". ucwords($col['nama_lengkap']) ?>
-                        </option>
-                  <?php } ?>
-                </select>
+                <label>Member</label>
+                <input type="text" class="form-control" id="member" name="member" placeholder="Masukan Kode / Nama Member">
+                <div id="member-list"></div>
               </div>
               <div class="form-group">
                 <label>Nomor Nota</label>
@@ -40,7 +55,7 @@ require_once 'layout/sidebar.php';
               </div>
               <div class="form-group">
                 <label>Nominal</label>
-                <input type="text" name="nominal" class="form-control" placeholder="Nominal" required>
+                <input type="text" name="nominal" class="form-control" id="nominal" placeholder="Nominal" required>
               </div>
             </div>
             <div class="card-footer">
@@ -51,3 +66,40 @@ require_once 'layout/sidebar.php';
       </div>
     </section>
 <?php require_once('layout/footer.php') ?>
+
+<script>
+$(document).ready(function(e){
+  $('#member').keyup(function(){
+    var member = $(this).val();
+    if(member != ''){
+      $.ajax({
+        url:"search-member.php",
+        method:"GET",
+        data:{data:member},
+        success:function(data){
+          $('#member-list').fadeIn();
+          $('#member-list').html(data);
+        }
+      });
+    }
+  });
+});
+
+$(document).on('click', 'li', function(){
+  $('#member').val($(this).text());
+  $('#member-list').fadeOut();
+});
+
+$("body").mouseup(function(e){
+  if($(e.target).closest('#member').length==0){
+    $('#member-list').stop().fadeOut();
+  }
+});
+
+//number format 
+var cleave = new Cleave('#nominal', {
+    numeral: true,
+    numeralThousandsGroupStyle: 'thousand'
+});
+
+</script>

@@ -31,6 +31,8 @@ $( function(){
 <script src="<?= base_url() ?>assets/plugins/datatables/jquery.dataTables.js"></script>
 <script src="<?= base_url() ?>assets/plugins/datatables/dataTables.bootstrap4.js"></script>
 
+<!-- cleave js -->
+<script src="<?= base_url('assets/cleave-js/dist/cleave.min.js') ?>"></script>
 
 <!-- CHECKBOX -->
 <script src="<?= base_url() ?>assets/plugins/iCheck/icheck.min.js"></script>
