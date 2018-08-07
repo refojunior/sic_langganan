@@ -15,27 +15,6 @@ require_once 'layout/navbar.php';
 require_once 'layout/sidebar.php';
 ?>
 
-<style>
-/* style auto complete list */
-.member-ul{
-  margin:0;
-  padding:0;
-  cursor:pointer;
-  list-style:none;
-  background:#f2f2f2;
-}
-
-.member-li {
-  padding:5px 0px 5px 10px;
-  display:block;
-}
-
-.member-li:hover {
-  background:#e5e5e5;
-}
-
-</style>
-
     <section class="content">
       <div class="col-md-6">
         <div class="card card-primary">
@@ -67,39 +46,3 @@ require_once 'layout/sidebar.php';
     </section>
 <?php require_once('layout/footer.php') ?>
 
-<script>
-$(document).ready(function(e){
-  $('#member').keyup(function(){
-    var member = $(this).val();
-    if(member != ''){
-      $.ajax({
-        url:"search-member.php",
-        method:"GET",
-        data:{data:member},
-        success:function(data){
-          $('#member-list').fadeIn();
-          $('#member-list').html(data);
-        }
-      });
-    }
-  });
-});
-
-$(document).on('click', 'li', function(){
-  $('#member').val($(this).text());
-  $('#member-list').fadeOut();
-});
-
-$("body").mouseup(function(e){
-  if($(e.target).closest('#member').length==0){
-    $('#member-list').stop().fadeOut();
-  }
-});
-
-//number format 
-var cleave = new Cleave('#nominal', {
-    numeral: true,
-    numeralThousandsGroupStyle: 'thousand'
-});
-
-</script>

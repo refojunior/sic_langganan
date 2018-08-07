@@ -108,7 +108,12 @@ switch ($_GET['to']) {
 		break;
 
 	case 'penukaran' : 
-		$kd_member = $_POST['kd_member'];
+		//parsing data agar yang disimpan kode saja
+		$member = $_POST['member'];
+		$members = explode(' ', $member);
+		
+		$kd_member = $members[0];
+
 		$kd_hadiah = $_POST['kd_hadiah'];
 		$jml_tkr = $_POST['stok'];
 		$user = $_SESSION['id'];

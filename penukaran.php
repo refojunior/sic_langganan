@@ -24,16 +24,9 @@ require_once 'layout/sidebar.php';
           <form action="proses/add.php?to=penukaran" method="post">
             <div class="card-body">
               <div class="form-group">
-                <label >Kode Member</label>
-                <select name="kd_member" class="form-control" required>
-                  <option value=""> - PILIH - </option>
-                  <?php $sql = $db->query("SELECT * FROM member where stat = 1"); 
-                      foreach($sql as $col){ ?>
-                        <option value="<?= $col['kd_member'] ?>">
-                          <?= $col['kd_member']." - ". ucwords($col['nama_lengkap']) ?>
-                        </option>
-                  <?php } ?>
-                </select>
+                <label>Member</label>
+                <input type="text" class="form-control" id="member" name="member" placeholder="Masukan Kode / Nama Member">
+                <div id="member-list"></div>
               </div>
               <div class="form-group">
                 <label >Kode Hadiah</label>

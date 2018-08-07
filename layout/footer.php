@@ -37,6 +37,40 @@ $( function(){
 <!-- CHECKBOX -->
 <script src="<?= base_url() ?>assets/plugins/iCheck/icheck.min.js"></script>
 <script>
+$(document).ready(function(e){
+  $('#member').keyup(function(){
+    var member = $(this).val();
+    if(member != ''){
+      $.ajax({
+        url:"search-member.php",
+        method:"GET",
+        data:{data:member},
+        success:function(data){
+          $('#member-list').fadeIn();
+          $('#member-list').html(data);
+        }
+      });
+    }
+  });
+});
+
+$(document).on('click', 'li', function(){
+  $('#member').val($(this).text());
+  $('#member-list').fadeOut();
+});
+
+$("body").mouseup(function(e){
+  if($(e.target).closest('#member').length==0){
+    $('#member-list').stop().fadeOut();
+  }
+});
+
+//number format 
+var cleave = new Cleave('#nominal', {
+    numeral: true,
+    numeralThousandsGroupStyle: 'thousand'
+});
+
 $(document).ready(function(){
   $('input').iCheck({
     checkboxClass: 'icheckbox_flat-blue',
